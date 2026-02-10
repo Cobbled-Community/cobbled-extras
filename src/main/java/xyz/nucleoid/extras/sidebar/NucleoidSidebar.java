@@ -34,10 +34,10 @@ public final class NucleoidSidebar {
     private static final Style GAME_COUNT_STYLE = Style.EMPTY.withColor(0xcccccc);
     private static final Style LINK_STYLE = Style.EMPTY.withColor(0x94eeff);
 
-    private static final String NAME = "Nucleoid";
+    private static final String NAME = "Cobbled Community";
     private static final Component DEV_TITLE = Component.literal(" (DEV)").setStyle(Style.EMPTY.withColor(0xbf0059));
 
-    private static final Component NAME_APPEND = Component.literal(".xyz").setStyle(Style.EMPTY.withColor(ChatFormatting.WHITE).withBold(false));
+    private static final Component NAME_APPEND = Component.literal("").setStyle(Style.EMPTY.withColor(ChatFormatting.WHITE).withBold(false));
 
     private static final Component TITLE_MAIN = Component.literal(NAME).setStyle(MAIN_TITLE_STYLE).append(NAME_APPEND);
     private static final Component TITLE_ALT = Component.literal(NAME).setStyle(ALT_TITLE_STYLE).append(NAME_APPEND);

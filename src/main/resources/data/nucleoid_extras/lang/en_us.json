@@ -1,5 +1,5 @@
 {
-  "text.nucleoid_extras.name": "Nucleoid Extras",
+  "text.nucleoid_extras.name": "Cobbled Extras",
 
   "nucleoid.sidebar.welcome": "Welcome %s!",
   "nucleoid.sidebar.player_in_game.1": "%s player online!",
@@ -14,7 +14,7 @@
 
   "nucleoid.sidebar.join.1": "Join with %s...",
   "nucleoid.sidebar.join.2": "...or by using the compass!",
-  "nucleoid.discord": "nucleoid.xyz/discord",
+  "nucleoid.discord": "cobbled.cloud/discord",
   "nucleoid.stop.scheduled": "Server restart has been scheduled! The server will restart in %s minutes, or when all games exit.",
   "nucleoid.stop.scheduled.already": "Server restart has already been scheduled.",
   "nucleoid.stop.game.open": "Cannot join this game: a server stop has been scheduled!",
@@ -415,7 +415,7 @@
 
   "text.nucleoid_extras.ui.action.more": "Right-click for more...",
 
-  "text.nucleoid_extras.wrapped.join": "Nucleoid Wrapped %s is here! Click here to open our website and see yours!",
+  "text.nucleoid_extras.wrapped.join": "Cobbled Wrapped %s is here! Click here to open our website and see yours!",
 
   "text.nucleoid_extras.rules.title": "Server Rules",
   "text.nucleoid_extras.rules.external_title": "Server Rules...",
@@ -439,8 +439,8 @@
   "text.nucleoid_extras.rules.keep_in_mind.title": "6. Keep in mind...",
   "text.nucleoid_extras.rules.keep_in_mind.1": "If you're working on a cool project, we'd love to see it - especially if it's related to the Nucleoid project! However, this server is not a place for unsolicited spam or advertisement. If you're not sure, ask a moderator!",
 
-  "advancements.nucleoid_extras.root.title": "Nucleoid",
-  "advancements.nucleoid_extras.root.description": "Advancements for Nucleoid",
+  "advancements.nucleoid_extras.root.title": "Cobbled Community",
+  "advancements.nucleoid_extras.root.description": "Advancements for Cobbled",
   "advancements.nucleoid_extras.first_tater.title": "My First Tater",
   "advancements.nucleoid_extras.first_tater.description": "Collect your first Tater in your Tater Box.",
   "advancements.nucleoid_extras.ten_taters.title": "Tater Hobbyist",
