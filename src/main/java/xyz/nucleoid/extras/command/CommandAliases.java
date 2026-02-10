@@ -3,6 +3,7 @@ package xyz.nucleoid.extras.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.command.permission.PermissionLevel;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.CommandOutput;
 import net.minecraft.server.command.ServerCommandSource;
@@ -11,6 +12,8 @@ import xyz.nucleoid.extras.NucleoidExtrasConfig;
 
 import java.util.Map;
 import java.util.UUID;
+
+import static net.minecraft.command.permission.LeveledPermissionPredicate.OWNERS;
 
 public final class CommandAliases {
     private static final CommandOutput NO_FEEDBACK_OUTPUT = new CommandOutput() {
@@ -48,7 +51,7 @@ public final class CommandAliases {
                 var value = entry.getValue();
                 var commands = value.commands;
                 literals[literals.length - 1].executes(context -> {
-                    var source = context.getSource().withMaxLevel(4);
+                    var source = context.getSource().withPermissions(OWNERS);
                     if (!value.feedback) {
                         source = source.withOutput(NO_FEEDBACK_OUTPUT);
                     }

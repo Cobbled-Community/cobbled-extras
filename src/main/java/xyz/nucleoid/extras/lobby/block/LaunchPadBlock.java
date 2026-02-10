@@ -65,7 +65,7 @@ public class LaunchPadBlock extends Block implements BlockEntityProvider, Polyme
     }
 
     public static void playLaunchSound(ServerPlayerEntity player, SoundEvent sound, SoundCategory category) {
-        player.playSoundToPlayer(sound, category, 0.5f, 1);
+        player.playSound(sound, 0.5f, 1);
     }
 
     private static Vec3d getVector(float pitch, float yaw) {

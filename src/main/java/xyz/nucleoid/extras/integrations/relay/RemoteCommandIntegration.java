@@ -65,7 +65,7 @@ public final class RemoteCommandIntegration {
         while ((command = this.commandQueue.poll()) != null) {
             var results = new ArrayList<Text>();
             var commandSource = command.createCommandSource(server, results::add);
-            server.getCommandManager().executeWithPrefix(commandSource, command.command);
+            server.getCommandManager().parseAndExecute(commandSource, command.command);
             sendCommandResults(results);
         }
     }

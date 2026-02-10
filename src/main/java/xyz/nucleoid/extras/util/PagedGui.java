@@ -181,7 +181,7 @@ public abstract class PagedGui extends SimpleGui {
     }
 
     public static void playSound(ServerPlayerEntity player, SoundEvent sound) {
-        player.playSoundToPlayer(sound, SoundCategory.MASTER, 1, 1);
+        player.playSound(sound, 1, 1);
     }
 
     public static void playClickSound(ServerPlayerEntity player) {

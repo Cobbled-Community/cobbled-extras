@@ -1,6 +1,5 @@
 package xyz.nucleoid.extras.mixin.player_list;
 
-import eu.pb4.polymer.core.mixin.entity.PlayerListS2CPacketAccessor;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.PlayerListS2CPacket;

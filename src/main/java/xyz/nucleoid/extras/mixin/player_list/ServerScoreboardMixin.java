@@ -18,7 +18,7 @@ public class ServerScoreboardMixin {
     @Final
     private MinecraftServer server;
 
-    @Inject(method = "addScoreHolderToTeam", at = @At(value = "INVOKE", target = "Lnet/minecraft/scoreboard/ServerScoreboard;runUpdateListeners()V", shift = At.Shift.AFTER))
+    @Inject(method = "addScoreHolderToTeam", at = @At("RETURN"))
     private void extras$updatePlayerAfterJoining(String playerName, Team team, CallbackInfoReturnable<Boolean> cir) {
         var player = this.server.getPlayerManager().getPlayer(playerName);
         if (player != null) {

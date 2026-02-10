@@ -1,5 +1,6 @@
 package xyz.nucleoid.extras.lobby.block.tater;
 
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import org.jetbrains.annotations.Nullable;
 import xyz.nucleoid.extras.lobby.NEBlocks;
 import xyz.nucleoid.extras.mixin.BlockWithEntityAccessor;
@@ -44,7 +45,7 @@ public class DaylightDetectorTaterBlock extends CubicPotatoBlock implements Bloc
 
 	private static void updateState(BlockState state, World world, BlockPos pos) {
 		int power = world.getLightLevel(LightType.SKY, pos) - world.getAmbientDarkness();
-		float skyAngle = world.getSkyAngleRadians(1.0f);
+		float skyAngle = world.getEnvironmentAttributes().getAttributeValue(EnvironmentAttributes.SUN_ANGLE_VISUAL, pos) * ((float)Math.PI / 180F);
 		boolean inverted = ((DaylightDetectorTaterBlock) state.getBlock()).inverted;
 		if (inverted) {
 			power = 15 - power;

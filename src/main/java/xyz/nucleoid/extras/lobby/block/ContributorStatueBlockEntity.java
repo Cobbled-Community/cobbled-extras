@@ -60,7 +60,7 @@ public class ContributorStatueBlockEntity extends BlockEntity {
         if (this.contributorId.equals(id)) return;
 
         this.contributorId = id;
-        player.playSoundToPlayer(SoundEvents.UI_BUTTON_CLICK.value(), SoundCategory.MASTER, 1, 1);
+        player.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 1, 1);
 
         this.updateModel();
         this.markDirty();

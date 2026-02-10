@@ -4,6 +4,8 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.command.permission.PermissionLevel;
+import net.minecraft.command.permission.PermissionPredicate;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
@@ -19,6 +21,7 @@ import xyz.nucleoid.plasmid.api.game.config.GameConfig;
 
 import java.util.ArrayList;
 
+import static net.minecraft.command.DefaultPermissions.*;
 import static net.minecraft.server.command.CommandManager.literal;
 
 public final class ScheduledStop {
@@ -45,7 +48,7 @@ public final class ScheduledStop {
         // @formatter:off
         dispatcher.register(
                 literal("stop").then(literal("schedule")
-                    .requires(source -> source.hasPermissionLevel(4))
+                    .requires(source -> source.getPermissions().hasPermission(OWNERS))
                     .executes(ScheduledStop::scheduleRestart)
                 )
         );

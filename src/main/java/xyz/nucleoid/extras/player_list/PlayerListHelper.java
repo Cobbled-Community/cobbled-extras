@@ -1,6 +1,5 @@
 package xyz.nucleoid.extras.player_list;
 
-import eu.pb4.polymer.core.mixin.entity.PlayerListS2CPacketAccessor;
 import net.minecraft.network.encryption.PublicPlayerSession;
 import net.minecraft.network.packet.s2c.play.PlayerListS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -9,6 +8,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Nullables;
 import net.minecraft.world.GameMode;
 import org.jetbrains.annotations.Nullable;
+import xyz.nucleoid.extras.mixin.player_list.PlayerListS2CPacketAccessor;
 import xyz.nucleoid.plasmid.api.game.GameSpaceManager;
 
 import java.util.ArrayList;

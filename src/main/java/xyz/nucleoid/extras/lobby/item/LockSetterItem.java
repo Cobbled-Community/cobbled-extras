@@ -58,7 +58,7 @@ public class LockSetterItem extends SimplePolymerItem {
         var text = Text.translatable("text.nucleoid_extras.lock_setter." + suffix, access.getContainerLockName());
         player.sendMessage(text, true);
 
-        player.playSoundToPlayer(SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
+        player.playSound(SoundEvents.BLOCK_CHEST_LOCKED, 1, 1);
     }
 
     public static ContainerLock createUnlockableLock() {

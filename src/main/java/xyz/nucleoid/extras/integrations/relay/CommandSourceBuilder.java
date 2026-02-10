@@ -8,6 +8,7 @@ import dev.gegy.roles.api.override.RoleOverrideReader;
 import dev.gegy.roles.api.override.RoleOverrideType;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.command.permission.PermissionPredicate;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandOutput;
 import net.minecraft.server.command.ServerCommandSource;
@@ -24,12 +25,19 @@ public interface CommandSourceBuilder {
 
     ServerCommandSource buildCommandSource(CommandOutput output, MinecraftServer server, String name, int permissionLevel, List<String> roles);
 
+    ServerCommandSource buildCommandSource(CommandOutput output, MinecraftServer server, String name, PermissionPredicate permissionLevel, List<String> roles);
+
     final class Vanilla implements CommandSourceBuilder {
         Vanilla() {
         }
 
         @Override
         public ServerCommandSource buildCommandSource(CommandOutput output, MinecraftServer server, String name, int permissionLevel, List<String> roles) {
+            return null;
+        }
+
+        @Override
+        public ServerCommandSource buildCommandSource(CommandOutput output, MinecraftServer server, String name, PermissionPredicate permissionLevel, List<String> roles) {
             return new ServerCommandSource(output, Vec3d.ZERO, Vec2f.ZERO, server.getOverworld(), permissionLevel, name, Text.literal(name), server, null);
         }
     }
@@ -88,6 +96,11 @@ public interface CommandSourceBuilder {
                 }
             };
             return new VirtualServerCommandSource(roleReader, output, Vec3d.ZERO, Vec2f.ZERO, server.getOverworld(), permissionLevel, name, Text.literal(name), server, null);
+        }
+
+        @Override
+        public ServerCommandSource buildCommandSource(CommandOutput output, MinecraftServer server, String name, PermissionPredicate permissionLevel, List<String> roles) {
+            return null;
         }
     }
 }
