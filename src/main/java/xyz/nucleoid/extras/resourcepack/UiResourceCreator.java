@@ -8,16 +8,16 @@ import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import eu.pb4.sgui.api.elements.GuiElementBuilder;
 import it.unimi.dsi.fastutil.chars.Char2IntMap;
 import it.unimi.dsi.fastutil.chars.Char2IntOpenHashMap;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.DyedColorComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.text.Style;
-import net.minecraft.text.StyleSpriteSource;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.FontDescription;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Tuple;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -39,7 +39,7 @@ public class UiResourceCreator {
     public static final String X32_MODEL = "nucleoid_extras:sgui/button_32";
     public static final String X32_RIGHT_MODEL = "nucleoid_extras:sgui/button_32_right";
 
-    public static final Style STYLE = Style.EMPTY.withColor(0xFFFFFF).withFont(new StyleSpriteSource.Font(identifier("gui")));
+    public static final Style STYLE = Style.EMPTY.withColor(0xFFFFFF).withFont(new FontDescription.Resource(identifier("gui")));
     private static final String ITEM_TEMPLATE = """
             {
               "parent": "|BASE|",
@@ -79,23 +79,23 @@ public class UiResourceCreator {
 
     public static Supplier<GuiElementBuilder> icon16(String path) {
         var model = genericIconRaw(Items.ALLIUM, path, BASE_MODEL, 0);
-        return () -> new GuiElementBuilder(model).setName(Text.empty()).hideDefaultTooltip();
+        return () -> new GuiElementBuilder(model).setName(Component.empty()).hideDefaultTooltip();
     }
 
     public static Supplier<GuiElementBuilder> icon16Offset(String path, int offset) {
         var model = genericIconRaw(Items.ALLIUM, path, BASE_MODEL, offset);
-        return () -> new GuiElementBuilder(model).setName(Text.empty()).hideDefaultTooltip();
+        return () -> new GuiElementBuilder(model).setName(Component.empty()).hideDefaultTooltip();
     }
 
     public static Supplier<GuiElementBuilder> icon32(String path) {
         var model = genericIconRaw(Items.ALLIUM, path, X32_MODEL, 0);
-        return () -> new GuiElementBuilder(model).setName(Text.empty()).hideDefaultTooltip();
+        return () -> new GuiElementBuilder(model).setName(Component.empty()).hideDefaultTooltip();
     }
 
     public static IntFunction<GuiElementBuilder> icon32Color(String path) {
         var model = genericIconRaw(Items.LEATHER_LEGGINGS, path, X32_MODEL, 0);
         return (i) -> {
-            return new GuiElementBuilder(model).setName(Text.empty()).hideDefaultTooltip().setComponent(DataComponentTypes.DYED_COLOR, new DyedColorComponent(i));
+            return new GuiElementBuilder(model).setName(Component.empty()).hideDefaultTooltip().setComponent(DataComponents.DYED_COLOR, new DyedItemColor(i));
         };
     }
 
@@ -105,7 +105,7 @@ public class UiResourceCreator {
         for (var i = 0; i < size; i++) {
             models[i] = genericIconRaw(Items.ALLIUM, path + "_" + i, BASE_MODEL, 0);
         }
-        return (i) -> new GuiElementBuilder(models[i]).setName(Text.empty()).hideDefaultTooltip();
+        return (i) -> new GuiElementBuilder(models[i]).setName(Component.empty()).hideDefaultTooltip();
     }
 
     public static IntFunction<GuiElementBuilder> horizontalProgress16(String path, int start, int stop, boolean reverse, int offset) {
@@ -141,7 +141,7 @@ public class UiResourceCreator {
         for (var i = start; i < stop; i++) {
             models[i - start] = genericIconRaw(Items.ALLIUM,  "gen/" + path + "_" + i, base, offset);
         }
-        return (i) -> new GuiElementBuilder(models[i]).setName(Text.empty()).hideDefaultTooltip();
+        return (i) -> new GuiElementBuilder(models[i]).setName(Component.empty()).hideDefaultTooltip();
     }
 
     public static ItemStack genericIconRaw(Item item, String path, String base, int offset) {
@@ -157,10 +157,10 @@ public class UiResourceCreator {
         return identifier("sgui/elements/" + path);
     }
 
-    public static Function<Text, Text> background(String path) {
+    public static Function<Component, Component> background(String path) {
         return background(path, 0);
     }
-    public static Function<Text, Text> background(String path, int verticalOffset) {
+    public static Function<Component, Component> background(String path, int verticalOffset) {
         var builder = new StringBuilder().append(CHEST_SPACE0);
         var c = (character++);
         builder.append(c);
@@ -169,10 +169,10 @@ public class UiResourceCreator {
         var texture = new FontTexture(identifier("sgui/" + path), 13 + verticalOffset, 256, new char[][] { new char[] {c} });
 
         FONT_TEXTURES.add(texture);
-        return new TextBuilders(Text.literal(builder.toString()).setStyle(STYLE));
+        return new TextBuilders(Component.literal(builder.toString()).setStyle(STYLE));
     }
 
-    public static Function<Text, Text> backgroundAnvil(String path) {
+    public static Function<Component, Component> backgroundAnvil(String path) {
         var builder = new StringBuilder().append(ANVIL_SPACE0);
         var c = (character++);
         builder.append(c);
@@ -181,7 +181,7 @@ public class UiResourceCreator {
         var texture = new FontTexture(identifier("sgui/" + path), 13, 256, new char[][] { new char[] {c} });
 
         FONT_TEXTURES.add(texture);
-        return new TextBuilders(Text.literal(builder.toString()).setStyle(STYLE));
+        return new TextBuilders(Component.literal(builder.toString()).setStyle(STYLE));
     }
 
     public static char font(Identifier path, int ascent, int height) {
@@ -191,7 +191,7 @@ public class UiResourceCreator {
         return c;
     }
 
-    public static Pair<Text, Text> polydexBackground(String path) {
+    public static Tuple<Component, Component> polydexBackground(String path) {
         var c = (character++);
         var d = (character++);
 
@@ -199,9 +199,9 @@ public class UiResourceCreator {
 
         FONT_TEXTURES.add(texture);
 
-        return new Pair<>(
-                Text.literal(Character.toString(c)).setStyle(STYLE),
-                Text.literal(Character.toString(d)).setStyle(STYLE)
+        return new Tuple<>(
+                Component.literal(Character.toString(c)).setStyle(STYLE),
+                Component.literal(Character.toString(d)).setStyle(STYLE)
         );
     }
 
@@ -309,10 +309,10 @@ public class UiResourceCreator {
         assetWriter.accept("assets/nucleoid_extras/font/gui.json", fontBase.toString().getBytes(StandardCharsets.UTF_8));
     }
 
-    private record TextBuilders(Text base) implements Function<Text, Text> {
+    private record TextBuilders(Component base) implements Function<Component, Component> {
         @Override
-        public Text apply(Text text) {
-            return Text.empty().append(base).append(text);
+        public Component apply(Component text) {
+            return Component.empty().append(base).append(text);
         }
     }
 

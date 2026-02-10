@@ -1,7 +1,7 @@
 package xyz.nucleoid.extras.lobby;
 
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.util.Identifier;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.resources.Identifier;
 import xyz.nucleoid.extras.NucleoidExtras;
 import xyz.nucleoid.extras.lobby.criterion.TaterCollectedCriterion;
 import xyz.nucleoid.extras.lobby.criterion.WearTaterCriterion;
@@ -14,7 +14,7 @@ public class NECriteria {
 	public static final WearTaterCriterion WEAR_TATER = new WearTaterCriterion();
 
 	public static void register() {
-		Criteria.register(TATER_COLLECTED_ID.toString(), TATER_COLLECTED);
-		Criteria.register(WEAR_TATER_ID.toString(), WEAR_TATER);
+		CriteriaTriggers.register(TATER_COLLECTED_ID.toString(), TATER_COLLECTED);
+		CriteriaTriggers.register(WEAR_TATER_ID.toString(), WEAR_TATER);
 	}
 }

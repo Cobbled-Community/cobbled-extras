@@ -2,9 +2,9 @@ package xyz.nucleoid.extras.lobby.block.tater;
 
 import xyz.nucleoid.extras.lobby.NEBlocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
 
 public class DaylightDetectorTaterBlockEntity extends BlockEntity {
 	public DaylightDetectorTaterBlockEntity(BlockPos pos, BlockState state) {
